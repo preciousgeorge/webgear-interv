@@ -52,8 +52,7 @@ class GetVouchers
     /**
     * Method to get Vouchers from Multiple API's.
     * The Api Url must be added to the partners table before it can be called here
-    * Results return from each Api is set to the array that holds all results but
-    * each result is set as value to the Partner name as key.
+    * Results return from each Api is set to an array that holds all 
     *
     *
     * @return array
@@ -80,14 +79,14 @@ class GetVouchers
                 if ($response->getStatusCode() == 200) {
                     array_push($vouchers, json_decode($response->getBody(), true));
                 } else{
-                    array_push($errors, 'WARNING: returned empty for Partner: '.$shop);
+                    array_push($errors, 'WARNING: returned empty for Partner: '.$partner_name);
                     LoggerUtils::err($errors);
                 }
             } else if ($result['state'] === 'rejected') { 
-                array_push($errors, 'ERR: Failed to fetch vouchers for Partner: '.$shop. 'REASON: ' . $result['reason']);
+                array_push($errors, 'ERR: Failed to fetch vouchers for Partner: '.$partner_name. 'REASON: ' . $result['reason']);
                 LoggerUtils::err($errors);
             } else {
-                array_push($errors, 'ERR: unknown exception - Failed to fetch vouchers for Partner: '.$shop);
+                array_push($errors, 'ERR: unknown exception - Failed to fetch vouchers for Partner: '.$partner_name);
                 LoggerUtils::err($errors);
             }
         }
