@@ -15,7 +15,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     return $this->response->withJson(['Welcome' => 'Your are at \'/\'']);
 });
 
-
+/** with reset option for reset the api to call input1.json again **/
 $app->get('/vouchers[/{reset}]', function(Request $request, Response $response, array $args){
     //log
     $this->logger->info("voucher endpoint '/vouchers' route" );

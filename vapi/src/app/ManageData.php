@@ -9,12 +9,23 @@ namespace App;
 */
 class ManageData
 {
+    /**
+    * @var string $dirPath
+    */
     private $dirPath;
 
+    /**
+    * @var string $file1
+    */
     protected $file1;
+
+    /**
+    * @var string $file2
+    */
     protected $file2;
 
     /**
+    * Initialize json files and data path
     *
     */
     public function __construct()
@@ -25,7 +36,11 @@ class ManageData
     }
 
     /**
+    * read Json from files
     *
+    * @param $reset 
+    *
+    * @return string 
     */
     public function readJson($reset = '')
     {
@@ -45,7 +60,10 @@ class ManageData
 
 
     /**
+    * open and read file contents
     *
+    * @param string
+    * @return string Json
     */
     public function openFile($fileName)
     {
@@ -54,7 +72,10 @@ class ManageData
     }
 
     /**
+    * Check if input1.json has read status
+    * @param string jsonString
     *
+    * @retun boolean
     */
     public function checkFileRead(string $fileContent) 
     {
@@ -63,7 +84,7 @@ class ManageData
     }
      
     /**
-    *
+    * update input1.json file with a read status 
     */
     public function updateFile()
     {
