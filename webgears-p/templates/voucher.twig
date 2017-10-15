@@ -1,0 +1,47 @@
+{% extends 'layout.twig' %}
+
+  
+{% block content %}
+<section class="vouchers" id="app">
+  <header class="header">
+    <h1>Vouchers</h1>
+  </header>
+
+  <section class="main" >
+    <div class="table">
+        <div class="table-row">
+            <div class="table-head">Select </div>
+            <div class="table-head">Shop </div>
+            <div class="table-head">Code</div>
+            <div class="table-head">Url</div>
+            <div class="table-head">Value</div>
+            <div class="table-head">Date Found</div>
+            <div class="table-head">Expiry Date</div>
+        </div>
+    {#% for voucher in vouchers % #}
+    {% verbatim %}
+      <div v-for="voucher in vouchers" v-bind:key="voucher.id" class="table-row">
+         <div class="table-cell">
+         <input class="toggle" type="checkbox"  v-bind:value="{ id: voucher.id }" v-on:change="submitVoucher(voucher.id)">
+         </div>
+         <div class="table-cell">{{ voucher.shop }} </div>
+         <div class="table-cell">{{ voucher.code }}</div>
+         <div class="table-cell">{{ voucher.url }}</div>
+         <div class="table-cell">{{ voucher.value }}</div>
+         <div class="table-cell">{{ voucher.date_found }}</div>
+         <div class="table-cell">{{ voucher.expiry_date }}</div> 
+      </div>
+    {% endverbatim %}
+      {#% else %#}
+      {#There are no vouchers here :( #}
+    {#% endfor %#}
+    </div>
+  </section>
+     <footer class="footer" v-cloak>
+        <ul class="filters">
+          <li><a href="#" v-on:click="refreshVouchers()">Refresh List</a></li>
+        </ul>
+     </footer>
+  </section>
+  
+{% endblock %}
